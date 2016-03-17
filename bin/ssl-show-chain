@@ -1,0 +1,37 @@
+#!/bin/sh
+
+prog="$(basename "$0")"
+
+say() {
+    printf "${prog}: %s\n" "$1"
+}
+
+say_err() {
+    say "$1" 1>&2
+}
+
+exit_err() {
+    say_err "$1"
+    exit 1
+}
+
+[ -n "$1" ] || exit_err "missing <file> argument"
+
+if ! openssl x509 -in "$1" -noout 2> /dev/null; then
+    exit_err "$1 is not an x509 certificate"
+fi
+
+tmpd="$(mktemp -d)"
+awk "
+    { print > \"${tmpd}/cert\" (1+n) \".pem\" }
+    /-----END CERTIFICATE-----/ { n++ }
+" "$1"
+
+i=0
+for cert in "$tmpd"/cert*.pem; do
+    printf "%s: " "$i"
+    openssl x509 -in "$cert" -noout -subject
+    i=$((i + 1))
+done
+
+rm -rf -- "$tmpd"
