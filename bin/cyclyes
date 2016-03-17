@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+    for arg; do
+        printf "%s\n" "$arg"
+    done
+done
