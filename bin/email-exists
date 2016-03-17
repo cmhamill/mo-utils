@@ -1,0 +1,2 @@
+#!/bin/sh
+swaks --silent 2 --no-hints --from 'example@example.org' --to "$1" -q TO
