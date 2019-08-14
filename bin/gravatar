@@ -1,11 +1,7 @@
 #!/bin/sh
 
-tmpf="$(mktemp)"
-result=1
-if curl -sf "http://www.gravatar.com/avatar/$(printf "%s" "$1" \
-        | md5sum | awk '{ printf $1 }' )?d=404" > "$tmpf"; then
-    mv -- "$tmpf" "${1}.jpg"
-    result=0
-fi
-rm "$tmpf"
-exit $result
+curl -sf "http://www.gravatar.com/avatar/$(
+    printf "%s" "$1" |
+        md5sum |
+        awk '{ printf $1 }'
+)?d=404&s=150" -o "${1}.jpg"
