@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf '%s\n' "$(realpath -- "${1:-$PWD}")" |
+    sha256sum |
+    cut -d ' ' -f 1
