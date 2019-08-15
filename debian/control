@@ -1,0 +1,35 @@
+Source: mo-utils
+Section: utils
+Priority: optional
+Maintainer: C. Morgan Hamill <me@cmhamill.org>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://github.com/cmhamill/mo-utils
+Vcs-Browser: https://github.com/cmhamill/mo-utils
+Vcs-Git: https://github.com/cmhamill/mo-utils.git
+
+Package: mo-utils
+Architecture: all
+Depends: ${misc:Depends},
+ awk,
+ bash (>=4.4),
+ coreutils (>=8.26),
+ curl (>= 7.52.1),
+ openssl (>=1.0),
+ sed,
+ swaks (>=20170101.0)
+Description: utility collection
+ Utility collection with a cheap pun.
+ .
+ So far, it includes:
+ - cyclyes: like 'yes', but loopier
+ - email-exists: check if an email exists
+ - find-up: search parent directories for file
+ - gravatar: fetches an email's gravatar
+ - hashpath: calculate hash of file path
+ - largest-dirs: list directories by used space
+ - public-ip: return public IP address
+ - ssl-show-chain: print cert chain subjects
+ - strip-ansi: strip ANSI sequences from input
+ - tabify: convert space sequences to tabs
+ - trim: strip leading and trailing whitespace
