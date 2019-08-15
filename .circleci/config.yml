@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:testing
+    steps:
+      - run: apt update
+      - run: apt install -yy build-essential devscripts git openssh-client
+      - checkout
+      - run: debuild -b --no-sign
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - mo-utils_*
+
+  deploy:
+    docker:
+      - image: circleci/ruby:buster
+    steps:
+      - attach_workspace:
+          at: ~/personal
+      - run: gem install package_cloud
+      - run: package_cloud push cmhamill/personal/debian/bullseye ~/personal/mo-utils_*.deb
+
+workflows:
+  version: 2
+  package-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^release-v.*/
+      - deploy:
+          context: default
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^release-v.*/
+            branches:
+              ignore: /.*/
