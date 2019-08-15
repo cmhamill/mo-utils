@@ -1,0 +1,3 @@
+#!/bin/sh
+
+du --human-readable --max-depth 1 -x  "$@" | sort --human-numeric-sort --reverse
