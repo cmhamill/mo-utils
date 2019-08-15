@@ -1,0 +1,13 @@
+*.build
+*.buildinfo
+*.changes
+*.deb
+*.dsc
+*.log
+*.substvars
+*.tar.gz
+.debhelper
+/build/
+/debian/files
+/debian/mo-utils
+debhelper-build-stamp
