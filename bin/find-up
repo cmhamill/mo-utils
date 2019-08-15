@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd "$(pwd 2>/dev/null)" || exit 1
+
+while true; do
+    if [ -f "$1" ]; then
+        echo "$PWD/$1"
+        exit 0
+    fi
+
+    if [ "$PWD" = / ] || [ "$PWD" = // ]; then
+        exit 1
+    fi
+
+    cd ..
+done
