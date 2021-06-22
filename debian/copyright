@@ -3,7 +3,7 @@ Upstream-Name: mo-utils
 Source: https://github.com/cmhamill/mo-utils.git
 
 Files: *
-Copyright: 2016, 2019 Chalmers Morgan Hamill
+Copyright: 2016, 2021 Chalmers Morgan Hamill
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
