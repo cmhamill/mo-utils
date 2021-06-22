@@ -5,7 +5,7 @@ jobs:
       - image: debian:testing
     steps:
       - run: apt update
-      - run: apt install -yy build-essential devscripts git openssh-client
+      - run: apt install -yy build-essential devscripts git shellcheck openssh-client
       - checkout
       - run: debuild -b --no-sign
       - persist_to_workspace:
@@ -15,7 +15,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/ruby:buster
+      - image: cimg/ruby:2.7
     steps:
       - attach_workspace:
           at: ~/personal

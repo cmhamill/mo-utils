@@ -1,3 +1,9 @@
+mo-utils (0.1.1) unstable; urgency=medium
+
+  * Update packaging to use Makefile.
+
+ -- C. Morgan Hamill <me@cmhamill.org>  Wed, 23 Jun 2021 10:11:38 -0700
+
 mo-utils (0.1.0) unstable; urgency=medium
 
   * Initial Release.
