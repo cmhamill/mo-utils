@@ -2,7 +2,7 @@
   description = "mo-utils utility collection.";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-21.05";
+    nixpkgs.url = "nixpkgs/nixos-21.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
