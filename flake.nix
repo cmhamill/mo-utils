@@ -7,16 +7,18 @@
   };
 
   outputs = { self, flake-utils, nixpkgs }: {
-    overlay = final: prev: {
+    overlays.default = final: prev: {
       mo-utils = prev.callPackage ./. { };
     };
   } // flake-utils.lib.eachDefaultSystem (system:
     let pkgs = import nixpkgs {
       inherit system;
-      overlays = [ self.overlay ];
+      overlays = [ self.overlays.default ];
     }; in {
-      defaultPackage = pkgs.mo-utils;
-      packages = { inherit (pkgs) mo-utils; };
+      packages = {
+        inherit (pkgs) mo-utils;
+        default = pkgs.mo-utils;
+      };
     }
   );
 }
