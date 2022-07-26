@@ -15,6 +15,7 @@
       inherit system;
       overlays = [ self.overlays.default ];
     }; in {
+      checks.build = pkgs.mo-utils;
       packages = {
         inherit (pkgs) mo-utils;
         default = pkgs.mo-utils;
