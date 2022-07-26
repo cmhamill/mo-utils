@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# shellcheck disable=SC2312
 curl -sf "http://www.gravatar.com/avatar/$(
     printf "%s" "$1" |
         md5sum |

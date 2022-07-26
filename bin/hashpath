@@ -1,5 +1,4 @@
 #!/bin/sh
 
-printf '%s\n' "$(realpath -- "${1:-$PWD}")" |
-    sha256sum |
-    cut -d ' ' -f 1
+realp=$(realpath -- "${1:-${PWD}}")
+printf '%s\n' "${realp}" | sha256sum | cut -d ' ' -f 1

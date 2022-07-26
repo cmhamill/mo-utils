@@ -28,10 +28,10 @@ awk "
 " "$1"
 
 i=0
-for cert in "$tmpd"/cert*.pem; do
-    printf "%s: " "$i"
-    openssl x509 -in "$cert" -noout -subject
+for cert in "${tmpd}"/cert*.pem; do
+    printf "%s: " "${i}"
+    openssl x509 -in "${cert}" -noout -subject
     i=$((i + 1))
 done
 
-rm -rf -- "$tmpd"
+rm -rf -- "${tmpd}"
