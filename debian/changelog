@@ -1,3 +1,9 @@
+mo-utils (0.1.2) unstable; urgency=medium
+
+  * Satisfy Shellcheck's style preferences
+
+ -- C. Morgan Hamill <me@cmhamill.org>  Thu, 01 Sep 2022 16:56:59 -0700
+
 mo-utils (0.1.1) unstable; urgency=medium
 
   * Update packaging to use Makefile.
